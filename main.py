@@ -1,17 +1,32 @@
 import imgkit
 import html
+from GuildMember import GuildMember
+from datetime import date
 
-# Speichern des HTML-Inhalts in einer Datei
-with open("output.html", "w") as html_file:
-    html_file.write(html.CONTENT)
+GUILD_MEMBER = GuildMember(user_id=123,
+                           name='Error404 | Manuel',
+                           level=56,
+                           points=12345,
+                           last_activity=date.today(),
+                           msg_counter=6034,
+                           vc_time=7513,
+                           birthday='12.04.1985',
+                           battle_tag='Error#0815',
+                           steam_code='34090784')
 
-options = {
-    'format': 'png',
-    'width': html.IMAGE_WIDTH,
-    'height': html.IMAGE_HEIGHT
-}
+if __name__ == '__main__':
+    # Speichern des HTML-Inhalts in einer Datei
+    with open("output.html", "w") as html_file:
+        dynamic_html = html.create_dynamic_html(guild_member=GUILD_MEMBER)
+        html_file.write(dynamic_html)
 
-# Konvertieren des HTMLs in ein PNG-Bild
-imgkit.from_file(filename="output.html", output_path="output.png", options=options)
+    options = {
+        'format': 'png',
+        'width': html.IMAGE_WIDTH,
+        'height': html.IMAGE_HEIGHT
+    }
 
-print("PNG-Bild wurde erstellt.")
+    # Konvertieren des HTMLs in ein PNG-Bild
+    imgkit.from_file(filename="output.html", output_path="output.png", options=options)
+
+    print("PNG-Bild wurde erstellt.")
