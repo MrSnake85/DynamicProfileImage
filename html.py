@@ -30,7 +30,7 @@ def create_dynamic_html(guild_member: GuildMember):
             position: relative;
             width: {IMAGE_WIDTH}px;
             height: {IMAGE_HEIGHT}px;
-            background-color: #333333;
+            background-color: #2c2d31;
         }}
         .avatar {{
             position: absolute;
